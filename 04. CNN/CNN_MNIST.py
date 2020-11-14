@@ -42,7 +42,7 @@ def createmodel(h, w, d, c):
 h, w, d = 28, 28, 3
 n_classes = 10
 epochs = 5
-bsize = 16
+bsize = 8
 data = []
 labels = []
 
@@ -78,7 +78,7 @@ model.compile(loss = "categorical_crossentropy", optimizer = "adam", metrics = [
 
 H = model.fit(trainX, trainY, batch_size = bsize, validation_data = (ValX, ValY), epochs = epochs, verbose = 2)
 
-model.save("digits.model")
+model.save("..\Results\CNN_MNIST\digits.model")
 
 plt.style.use("ggplot")
 plt.figure(figsize = [8, 6])
@@ -87,7 +87,7 @@ plt.plot(np.arange(0, N), H.history["loss"], label = "train-loss")
 plt.xlabel("Epochs")
 plt.ylabel("Loss")
 plt.legend()
-plt.savefig("Loss.png")
+plt.savefig("..\Results\CNN_MNIST\Loss.png")
 
 plt.style.use("ggplot")
 plt.figure(figsize = [8, 6])
@@ -97,7 +97,7 @@ plt.plot(np.arange(0, N), H.history["val_accuracy"], label = "val-acc")
 plt.xlabel("Epochs")
 plt.ylabel("Accuracy")
 plt.legend()
-plt.savefig("Accuracy.png")
+plt.savefig("..\Results\CNN_MNIST\Accuracy.png")
 
 print("Model Evaluation")
 print(model.evaluate(testX, testY))
